@@ -1,0 +1,89 @@
+1) gcd and lcm using while loop
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int main() {
+    int a, b;
+    cout << "Enter first number: ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+    cout << "Gcd of " << a << " and " << b << " is: " << gcd(a,b) << endl;
+    cout << "Lcm of " << a << " and " << b << " is: " << lcm(a,b); 
+    return 0;
+}
+
+2) 1+3/2+9/4+27/8+---------calculate sum
+
+#include <bits/stdc++.h>
+using namespace std;
+
+float calculateSum(int n) {
+    float sum = 0.0;
+    float count = 1.0; 
+
+    for (int i = 1; i <= n; i++) {
+        sum += count;
+        count *= (3.0 / 2.0); 
+    }
+
+    return sum;
+}
+
+int main() {
+    int n;
+    cout << "Enter the number : ";
+    cin >> n;
+
+    float sum = calculateSum(n);
+    cout << "Sum of the series: " << sum;
+
+    return 0;
+}
+
+3) 1834 --> 4^4+3^3+8^2+1^1 calculate sum
+
+#include<bits/stdc++.h>
+using namespace std;
+int count(int n){
+    int count=0;
+    int  rem=0;
+    while(n){
+        rem=n%10;
+        n=n/10;
+        count++;
+    }
+    return count;
+}
+int remsquar(int num,int power){
+    if(power==0)
+        return 1;
+    return num*remsquar(num,power-1);
+}
+
+int main(){
+    int n=1834;
+    int rem=0, sum=0;
+    while(n){
+        rem=n%10;
+        sum+=remsquar(rem,count(n));
+        n=n/10;
+        
+    }
+    cout<<sum;
+   return 0;
+}
