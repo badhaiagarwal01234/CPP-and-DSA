@@ -1,0 +1,165 @@
+1. Write a function that accepts 3 variables and a function as an argument, which helps you perform calculations like addition, subtraction, and multiplication.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef int (*operation)(int, int, int);
+
+int sum(int a, int b, int c)
+{
+   return a+b+c; 
+}
+
+int sub(int a, int b, int c)
+{
+    return a - b - c;
+}
+
+int mul(int a, int b, int c)
+{
+    return a * b * c;
+}
+
+int main()
+{
+    int a, b, c;
+    cout<<"enter the value of a, b , c :";
+    cin>>a>>b>>c;
+    
+    operation result;
+    result = &sum;
+    cout<<"addition : "<<sum(a,b,c)<<"\n";
+    
+    
+    result = &sub;
+    cout<<"substraction : "<<sub(a,b,c)<<"\n";
+    
+    
+    result = &mul;
+    cout<<"multipilaction : "<<mul(a,b,c)<<"\n";
+    
+
+    return 0;
+}
+
+2. Using the concept of calling by reference, calculate the area of a triangle.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int area(int &h,int &b)
+{
+   return 1/2.0*h*b; 
+}
+
+int main()
+{
+    int h, b;
+    cout<<"enter the height and base :";
+    cin>> h>>b;
+    
+    cout<<"area of traingle :"<<area(h,b);
+
+    return 0;
+}
+
+3. Using the concept of call by address, calculate the heron's formula for the triangle. Check the formula using the internet.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+float traingle(int *a,int *b, int *c)
+{
+   float s = (*a+*b+*c)/2.0;
+   
+   float area = sqrt(s*(s-*a)*(s-*b)*(s-*c));
+   
+   return area;
+}
+
+int main()
+{
+    int a, b, c;
+    cout<<"enter the value of a, b, c :";
+    cin>>a>>b>>c;
+    
+    cout<<"herons formula for traingle :"<<traingle(&a,&b,&c);
+
+    return 0;
+}
+ 
+4. Write a function that can convert temperature to Fahrenheit. Use the concept of call by address to solve it.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+float temprature(float *c)
+{
+   float F= *c * (9.0/5.0) + 32.0;
+   
+   return F ;
+}
+
+int main()
+{
+    float c;
+    cout<<"enter the value of celsius :";
+    cin>>c;
+    
+    cout<<"temprature to Fahrenheit :"<<temprature(&c);
+
+    return 0;
+}
+
+5. Write a program to check whether the given input is even or odd using pointer and return a Boolean output.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+bool evenodd(int *a)
+{
+   if(*a%2==0)
+   return true;
+   else
+   return false ;
+}
+
+int main()
+{
+    int a;
+    cout<<"enter the value of a :";
+    cin>>a;
+    
+    if(evenodd(&a)==true)
+    cout<<"even number";
+    else
+    cout<<"odd number";
+
+    return 0;
+}
+
+6. Write a program to check whether given number is positive, negative or zero using the concept of calling by reference and returning a string that helps it know.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+string number(int *a)
+{
+   if(*a >0)
+   return "positive";
+   else if(*a < 0)
+   return "negative";
+   else
+   return "zero";
+}
+
+int main()
+{
+    int a;
+    cout<<"enter the value of a :";
+    cin>>a;
+    
+    cout<<"number is "<<number(&a);
+
+    return 0;
+}
